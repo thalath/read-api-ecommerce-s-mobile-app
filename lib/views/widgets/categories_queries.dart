@@ -20,7 +20,6 @@ int selectedIndex = 0;
 class _CategoriesQueriesState extends State<CategoriesQueries> {
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
     return SizedBox(
       height: 50,
       child: ListView.separated(
