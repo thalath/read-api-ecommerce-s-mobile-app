@@ -174,7 +174,7 @@ class CheckoutScreen extends StatelessWidget {
         Text(
           title,
           style: TextStyle(
-            color: Theme.of(context).colorScheme.onSecondary,
+            color: Theme.of(context).colorScheme.primary,
             fontSize: isTotal ? 20 : 16,
             fontWeight: isTotal ? FontWeight.bold : FontWeight.w500,
           ),

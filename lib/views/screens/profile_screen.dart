@@ -1,11 +1,21 @@
+import 'package:assignment_1/state_provder/theme_logic.dart';
 import 'package:assignment_1/views/widgets/profile_stat.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
   @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  @override
   Widget build(BuildContext context) {
+    bool currentThemeMode = context.watch<ThemeLogic>().isLight;
+    ThemeLogic themeMode = context.read<ThemeLogic>();
+    bool isNotifier = false;
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -79,7 +89,7 @@ class ProfileScreen extends StatelessWidget {
                           children: [
                             ProfileStat(value: "12", title: "Orders"),
                             ProfileStat(value: "24", title: "Wishlist"),
-                            ProfileStat(value: "8", title: "Wishlist"),
+                            ProfileStat(value: "8", title: "Ratings"),
                           ],
                         ),
                       ],
@@ -133,9 +143,13 @@ class ProfileScreen extends StatelessWidget {
                     icon: Icons.notifications_none,
                     title: "Notifications",
                     trailing: Switch(
-                      value: true,
+                      value: !isNotifier,
                       activeThumbColor: Theme.of(context).colorScheme.primary,
-                      onChanged: (value) {},
+                      onChanged: (value) {
+                        setState(() {
+                          isNotifier = !isNotifier;
+                        });
+                      },
                     ),
                   ),
 
@@ -144,9 +158,16 @@ class ProfileScreen extends StatelessWidget {
                     icon: Icons.dark_mode_outlined,
                     title: "Dark Mode",
                     trailing: Switch(
-                      value: false,
+                      value: !currentThemeMode,
                       activeThumbColor: Theme.of(context).colorScheme.primary,
-                      onChanged: (value) {},
+                      onChanged: (currentThemeMode) {
+                        setState(() {
+                          currentThemeMode = !currentThemeMode;
+                        });
+                        currentThemeMode
+                            ? themeMode.darkTheme()
+                            : themeMode.lightTheme();
+                      },
                     ),
                   ),
 

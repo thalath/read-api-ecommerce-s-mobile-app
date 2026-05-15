@@ -48,7 +48,7 @@ class _CategoriesQueriesState extends State<CategoriesQueries> {
               decoration: BoxDecoration(
                 color: isSelected
                     ? Theme.of(context).colorScheme.primary
-                    : Theme.of(context).colorScheme.surfaceContainer,
+                    : Theme.of(context).colorScheme.secondary,
 
                 borderRadius: BorderRadius.circular(30),
 
@@ -66,8 +66,8 @@ class _CategoriesQueriesState extends State<CategoriesQueries> {
                   widget.categories[index],
 
                   style: TextStyle(
-                    color: isSelected || isDark
-                        ? Theme.of(context).colorScheme.secondary
+                    color: isSelected
+                        ? Theme.of(context).colorScheme.onPrimary
                         : Theme.of(context).colorScheme.primary,
                     fontWeight: FontWeight.bold,
                   ),

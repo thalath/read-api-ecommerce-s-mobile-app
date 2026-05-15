@@ -1,11 +1,9 @@
 import 'package:assignment_1/models/dummy_json_models.dart';
-import 'package:assignment_1/state_provder/theme_logic.dart';
 import 'package:assignment_1/views/screens/detail_screen.dart';
 import 'package:assignment_1/views/widgets/categories_queries.dart';
 import 'package:assignment_1/views/widgets/product_baner.dart';
 import 'package:assignment_1/views/widgets/product_card.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
@@ -65,25 +63,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   AppBar _buildAppBar() {
-    ThemeLogic themeMode = context.read<ThemeLogic>();
-    bool currentThemeMode = context.watch<ThemeLogic>().isLight;
     return AppBar(
       backgroundColor: Theme.of(context).colorScheme.primary,
       foregroundColor: Theme.of(context).colorScheme.onPrimary,
       title: Text('E-Commerce'),
-      actions: [
-        IconButton(
-          onPressed: () {
-            setState(() {
-              currentThemeMode = !currentThemeMode;
-            });
-            currentThemeMode ? themeMode.darkTheme() : themeMode.lightTheme();
-          },
-          icon: currentThemeMode
-              ? Icon(Icons.light_mode)
-              : Icon(Icons.dark_mode),
-        ),
-      ],
+      actions: [Icon(Icons.notifications), SizedBox(width: 20)],
     );
   }
 

@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
           onInverseSurface: Colors.green.shade700,
           surface: Colors.white,
           onSurface: Colors.black,
-
+          inverseSurface: Colors.black,
           secondary: secondaryColor,
 
           outline: Colors.grey.shade700,
@@ -75,12 +75,12 @@ class MyApp extends StatelessWidget {
 
         colorScheme: ColorScheme.dark(
           primary: darkPrimary,
-          onPrimary: Colors.black,
+          onPrimary: Colors.white,
           surfaceContainer: Colors.grey.shade800,
           surface: const Color(0xFF1E1E1E),
           onSurface: Colors.white,
           onInverseSurface: Colors.green.shade500,
-
+          inverseSurface: Colors.white,
           secondary: Colors.grey.shade800,
 
           outline: Colors.grey.shade500,

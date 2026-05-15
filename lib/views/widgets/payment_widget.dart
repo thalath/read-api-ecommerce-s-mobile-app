@@ -30,7 +30,7 @@ class PaymentWidget extends StatelessWidget {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
-                color: Theme.of(context).colorScheme.onSecondary,
+                color: Theme.of(context).colorScheme.inverseSurface,
               ),
             ),
           ),
@@ -39,7 +39,7 @@ class PaymentWidget extends StatelessWidget {
             value: true,
             groupValue: true,
             onChanged: (value) {},
-            activeColor: Theme.of(context).primaryColor,
+            activeColor: Theme.of(context).colorScheme.primary,
           ),
         ],
       ),
