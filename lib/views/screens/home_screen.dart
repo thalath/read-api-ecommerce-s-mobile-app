@@ -67,7 +67,11 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Theme.of(context).colorScheme.primary,
       foregroundColor: Theme.of(context).colorScheme.onPrimary,
       title: Text('E-Commerce'),
-      actions: [Icon(Icons.notifications), SizedBox(width: 20)],
+      actions: [
+        Icon(Icons.notifications),
+        Icon(Icons.light_mode_outlined),
+        SizedBox(width: 20),
+      ],
     );
   }
 

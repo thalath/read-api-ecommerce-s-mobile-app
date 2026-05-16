@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     const darkPrimary = Color.fromARGB(255, 39, 179, 160);
 
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      // debugShowCheckedModeBanner: false,
       home: const MainScreen(),
 
       themeMode: isLightMode ? ThemeMode.light : ThemeMode.dark,

@@ -13,8 +13,6 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    bool currentThemeMode = context.watch<ThemeLogic>().isLight;
-    ThemeLogic themeMode = context.read<ThemeLogic>();
     bool isNotifier = false;
     return Scaffold(
       body: SafeArea(
@@ -89,7 +87,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           children: [
                             ProfileStat(value: "12", title: "Orders"),
                             ProfileStat(value: "24", title: "Wishlist"),
-                            ProfileStat(value: "8", title: "Ratings"),
+                            ProfileStat(value: "8", title: "Favorites"),
                           ],
                         ),
                       ],
@@ -143,9 +141,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     icon: Icons.notifications_none,
                     title: "Notifications",
                     trailing: Switch(
-                      value: !isNotifier,
+                      value: isNotifier,
                       activeThumbColor: Theme.of(context).colorScheme.primary,
-                      onChanged: (value) {
+                      onChanged: (isNotifier) {
                         setState(() {
                           isNotifier = !isNotifier;
                         });
@@ -158,15 +156,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     icon: Icons.dark_mode_outlined,
                     title: "Dark Mode",
                     trailing: Switch(
-                      value: !currentThemeMode,
+                      value: !context.watch<ThemeLogic>().isLight,
                       activeThumbColor: Theme.of(context).colorScheme.primary,
-                      onChanged: (currentThemeMode) {
-                        setState(() {
-                          currentThemeMode = !currentThemeMode;
-                        });
-                        currentThemeMode
-                            ? themeMode.darkTheme()
-                            : themeMode.lightTheme();
+                      onChanged: (value) {
+                        context.read<ThemeLogic>().toggleToSwitchMode();
                       },
                     ),
                   ),
