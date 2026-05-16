@@ -22,7 +22,7 @@ class _MainScreenState extends State<MainScreen> {
 
   // CART ITEMS
   List<Product> cartItems = [];
-  List<Product>? loadedProducts;
+
   int _currentIndex = 0;
 
   @override
@@ -47,23 +47,21 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _fetchingFutureAPI(),
-      bottomNavigationBar: loadedProducts == null
-          ? null
-          : Container(
-              constraints: BoxConstraints(maxWidth: 1200),
-              child: BottomNavbarWidget(
-                currentIndex: _currentIndex,
+      bottomNavigationBar: Container(
+        constraints: BoxConstraints(maxWidth: 1200),
+        child: BottomNavbarWidget(
+          currentIndex: _currentIndex,
 
-                onTap: (index) {
-                  setState(() {
-                    _currentIndex = index;
-                  });
-                },
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
 
-                // REAL CART COUNT
-                cartCount: cartItems.length,
-              ),
-            ),
+          // REAL CART COUNT
+          cartCount: cartItems.length,
+        ),
+      ),
     );
   }
 
@@ -107,7 +105,6 @@ class _MainScreenState extends State<MainScreen> {
         }
 
         final products = snapshot.data!;
-        loadedProducts = products;
 
         final screens = [
           HomeScreen(
