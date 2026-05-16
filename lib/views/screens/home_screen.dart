@@ -67,11 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Theme.of(context).colorScheme.primary,
       foregroundColor: Theme.of(context).colorScheme.onPrimary,
       title: Text('E-Commerce'),
-      actions: [
-        Icon(Icons.notifications),
-        Icon(Icons.light_mode_outlined),
-        SizedBox(width: 20),
-      ],
+      actions: [Icon(Icons.notifications), SizedBox(width: 20)],
     );
   }
 
@@ -101,8 +97,8 @@ class _HomeScreenState extends State<HomeScreen> {
         itemCount: widget.products.length,
         controller: PageController(viewportFraction: 1),
         itemBuilder: (context, index) {
-          return InkWell(
-            onTap: () {
+          return ProductBannerWidget(
+            onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => DetailScreen(
@@ -115,7 +111,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               );
             },
-            child: ProductBannerWidget(product: widget.products[index]),
+            product: widget.products[index],
+            currentIndex: index,
+            totalItems: widget.products.length,
           );
         },
       ),

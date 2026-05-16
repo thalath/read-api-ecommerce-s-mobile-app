@@ -1,10 +1,20 @@
+import 'package:assignment_1/views/widgets/smart_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:assignment_1/models/dummy_json_models.dart';
 
 class ProductBannerWidget extends StatelessWidget {
-  final Product product;
+  const ProductBannerWidget({
+    super.key,
+    required this.product,
+    this.onPressed,
+    this.currentIndex,
+    this.totalItems,
+  });
 
-  const ProductBannerWidget({super.key, required this.product});
+  final Product product;
+  final VoidCallback? onPressed;
+  final int? currentIndex;
+  final int? totalItems;
 
   @override
   Widget build(BuildContext context) {
@@ -136,7 +146,7 @@ class ProductBannerWidget extends StatelessWidget {
                             vertical: 12,
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: onPressed,
                         child: const Text(
                           "Shop Now",
                           style: TextStyle(fontWeight: FontWeight.bold),
@@ -159,6 +169,29 @@ class ProductBannerWidget extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+          ),
+          Positioned(
+            bottom: 14,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: SmartIndicator(
+                currentIndex: currentIndex!,
+                totalItems: totalItems!,
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 10,
+            right: 15,
+            child: Text(
+              '${currentIndex! + 1}\\ $totalItems',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.onPrimary,
+              ),
             ),
           ),
         ],

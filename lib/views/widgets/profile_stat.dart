@@ -13,7 +13,7 @@ class ProfileStat extends StatelessWidget {
         Text(
           value,
           style: TextStyle(
-            color: Theme.of(context).colorScheme.surface,
+            color: Theme.of(context).colorScheme.onPrimary,
             fontSize: 24,
             fontWeight: FontWeight.bold,
           ),

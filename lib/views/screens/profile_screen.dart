@@ -13,6 +13,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = context.watch<ThemeLogic>().isLight;
     bool isNotifier = false;
     return Scaffold(
       body: SafeArea(
@@ -154,9 +155,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   _profileTile(
                     context,
                     icon: Icons.dark_mode_outlined,
-                    title: "Dark Mode",
+                    title: !isDarkMode
+                        ? "You are on Dark Mode"
+                        : "Your are on Light Mode",
                     trailing: Switch(
-                      value: !context.watch<ThemeLogic>().isLight,
+                      value: !isDarkMode,
                       activeThumbColor: Theme.of(context).colorScheme.primary,
                       onChanged: (value) {
                         context.read<ThemeLogic>().toggleToSwitchMode();
