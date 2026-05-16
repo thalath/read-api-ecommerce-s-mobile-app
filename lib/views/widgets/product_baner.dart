@@ -186,7 +186,7 @@ class ProductBannerWidget extends StatelessWidget {
             bottom: 10,
             right: 15,
             child: Text(
-              '${currentIndex! + 1}\\ $totalItems',
+              '${currentIndex! + 1} \\ $totalItems',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
